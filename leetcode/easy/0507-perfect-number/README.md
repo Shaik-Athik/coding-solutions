@@ -37,18 +37,23 @@ Output: false
 ## Solution
 
 **Language:** Python  
-**Runtime:** 0 ms  
-**Memory:** 19.2 MB  
-**Submitted:** 2026-09-15T14:42:26.146Z  
+**Runtime:** 3 ms (beats 89.65%)  
+**Memory:** 19.1 MB (beats 97.56%)  
+**Submitted:** 2026-09-15T14:48:36.017Z  
 
 ```py
 class Solution:
     def checkPerfectNumber(self, num: int) -> bool:
-        sum_ = 0
+        if num <= 1:
+            return False
+            
+        sum_ = 1
 
-        for i in range(1, int(num ** 0.5) + 1):
+        for i in range(2, int(num ** 0.5) + 1):
             if num % i == 0:
                 sum_ += i
+                if i*i != num:
+                    sum_ += num // i
         
         return sum_ == num
 ```
