@@ -37,20 +37,21 @@ Output: 99
 ## Solution
 
 **Language:** Python  
-**Runtime:** 4 ms (beats 45.71%)  
+**Runtime:** 0 ms (beats 100.00%)  
 **Memory:** 20.6 MB (beats 63.12%)  
-**Submitted:** 2026-09-16T13:29:26.013Z  
+**Submitted:** 2026-09-16T13:32:59.294Z  
 
 ```py
 class Solution:
     def singleNumber(self, nums: list[int]) -> int:
-        nums.sort()
+        ones, twos = 0, 0
 
-        for i in range(0, len(nums) - 1, 3):
-            if i + 1 >= len(nums) or nums[i] != nums[i + 1]:
-                return nums[i]
+        for num in nums:
+            ones = (ones ^ num) & ~twos
 
-        return nums[-1]
+            twos = (twos ^ num) & ~ones
+        
+        return ones
 ```
 
 ---
