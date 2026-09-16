@@ -37,21 +37,20 @@ Output: 99
 ## Solution
 
 **Language:** Python  
-**Runtime:** 1041 ms (beats 5.10%)  
-**Memory:** 20.6 MB (beats 46.38%)  
-**Submitted:** 2026-09-16T13:22:05.159Z  
+**Runtime:** 4 ms (beats 45.71%)  
+**Memory:** 20.6 MB (beats 63.12%)  
+**Submitted:** 2026-09-16T13:29:26.013Z  
 
 ```py
 class Solution:
     def singleNumber(self, nums: list[int]) -> int:
-        ans = []
-        for i in nums:
-            if i not in ans:
-                ans.append(i)
-        
-        for i in ans:
-            if nums.count(i)==ans.count(i):
-                return i
+        nums.sort()
+
+        for i in range(0, len(nums) - 1, 3):
+            if i + 1 >= len(nums) or nums[i] != nums[i + 1]:
+                return nums[i]
+
+        return nums[-1]
 ```
 
 ---
