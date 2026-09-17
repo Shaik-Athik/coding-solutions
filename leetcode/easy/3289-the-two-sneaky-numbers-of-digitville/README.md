@@ -52,21 +52,22 @@ The numbers 4 and 5 each appear twice in the array.
 ## Solution
 
 **Language:** Python  
-**Runtime:** 6 ms (beats 12.01%)  
-**Memory:** 19.3 MB (beats 61.09%)  
-**Submitted:** 2026-09-17T05:57:57.442Z  
+**Runtime:** 0 ms (beats 100.00%)  
+**Memory:** 19.4 MB (beats 26.06%)  
+**Submitted:** 2026-09-17T06:03:48.970Z  
 
 ```py
 class Solution:
     def getSneakyNumbers(self, nums: List[int]) -> List[int]:
-        ans = []
-        for x in nums:
-            if nums.count(x) == 2:
-                if x not in ans:
-                    ans.append(x)
+        seen = []
+        duplicates = []
+        for i, v in enumerate(nums):
+            if v in seen:
+                duplicates.append(v)
+            else:
+                seen.append(v)
         
-        return ans
-
+        return duplicates
 ```
 
 ---
